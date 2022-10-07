@@ -1,0 +1,32 @@
+type: install
+name: AFFiNE
+id: AFFiNE
+categories: ["apps/dev-and-admin-tools"]
+logo: https://github.com/yoanbernabeu/AFFiNE_Jelastic/blob/main/logo_AFFiNE.jpg?raw=true
+homepage: https://affine.pro/
+
+description: |
+  AFFiNE deployment manifest file for Jelastic
+  
+ssl: true
+
+nodes:
+  - nodeType: nginx
+    nodeGroup: bl
+    count: 1
+    cloudlets: 8
+    fixedCloudlets: 1
+    displayName: LoadBalancer
+    
+  - image: ghcr.io/toeverything/affine:nightly-server-latest
+    count: 1
+    cloudlets: 16
+    fixedCloudlets: 1
+    nodeGroup: cp
+    displayName: AFFiNE
+    volumes:
+      - /app/data
+
+
+success: |
+  Your AFFiNE environment is ready to go!

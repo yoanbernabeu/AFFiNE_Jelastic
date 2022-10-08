@@ -24,6 +24,7 @@ nodes:
     fixedCloudlets: 1
     nodeGroup: cp
     displayName: AFFiNE
+    isSLBAccessEnabled: false
     volumes:
       - /app/data
 
